@@ -1,0 +1,38 @@
+[
+    {
+        "id": 2,
+        "title": "Membrana líquida",
+        "description": "Elástica",
+        "price": 50000,
+        "thumbnail": "membranaliquida.jpg",
+        "code": "COD001",
+        "stock": 50
+    },
+    {
+        "id": 3,
+        "title": "Acrílico premium",
+        "description": "Exterior",
+        "price": 40000,
+        "thumbnail": "acrilicopremiumexterior.jpg",
+        "code": "COD002",
+        "stock": 100
+    },
+    {
+        "id": 4,
+        "title": "Acrílico premium",
+        "description": "Interior",
+        "price": 45000,
+        "thumbnail": "acrilicopremiuminterior.jpg",
+        "code": "COD003",
+        "stock": 30
+    },
+    {
+        "id": 5,
+        "title": "Látex obra",
+        "description": "Exterior e interior",
+        "price": 55000,
+        "thumbnail": "latexobra.jpg",
+        "code": "COD004",
+        "stock": 10
+    }
+]
