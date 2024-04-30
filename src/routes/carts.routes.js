@@ -1,5 +1,5 @@
 import { Router } from "express";
-import fs from "fs";
+import { promises as fs } from "fs";
 
 const router = Router();
 const cartsFilePath = "./src/carts.json";
@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
     }
 });
 
-router.post("/:cid/product/:pid", (req, res) => {
+router.post("/:cid/products/:pid", (req, res) => {
     try {
         const cartId = req.params.cid;
         const productId = req.params.pid;
