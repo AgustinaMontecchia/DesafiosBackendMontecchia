@@ -106,8 +106,8 @@ class ProductManager {
 export default ProductManager;
 
     const productManager = new ProductManager();
-productManager.addProduct("Zapatillas deportivas", "Blancas", 20000, "zapasblancas.jpg", "COD001", 100);
-productManager.addProduct("Zapatillas deportivas", "Negras", 15000, "negras.jpg", "COD002", 50);
+productManager.addProduct("Membrana líquida", "Elástica", 50000, "membranaliquida.jpg", "COD001", 50);
+productManager.addProduct("Acrílico premium", "Exterior", 40000, "acrilicopremiumexterior.jpg", "COD002", 100);
 
 
 productManager.getProducts().then(products => console.log("Todos los productos:", products));
@@ -122,9 +122,9 @@ productManager.deleteProduct();
 
 const test = async () => {
 
-    await productManager.addProduct("Zapatillas de salir", "Rayadas", 24000, "rayadas.jpg", "COD003", 200);
+    await productManager.addProduct("Acrílico premium", "Interior", 45000, "acrilicopremiuminterior.jpg", "COD003", 30);
 
-    await productManager.addProduct("Zapatillas de salir", "Lisas", 35000, "lisas.jpg", "COD004", 70);
+    await productManager.addProduct("Látex obra", "Exterior e interior", 55000, "latexobra.jpg", "COD004", 10);
 
     const products = await productManager.getProducts();
 
@@ -134,7 +134,7 @@ const test = async () => {
 
     console.log("Producto encontrado por ID:", product);
 
-    await productManager.updateProduct(2, { price: 20000 });
+    await productManager.updateProduct(2, { price: 50000 });
 
     await productManager.deleteProduct();
 
