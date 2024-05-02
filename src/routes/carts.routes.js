@@ -1,26 +1,30 @@
 import { Router } from "express";
-import { promises as fs } from "fs";
+import { promises as fs } from 'fs';
 
 const router = Router();
-const cartsFilePath = "./src/carts.json";
+const cartsFilePath = './src/carts.json'
 
-function loadCartsData() {
+
+async function loadCartsData() {
     try {
-        const cartsData = fs.readFileSync(cartsFilePath, "utf8");
+        const cartsData = await fs.readFile(cartsFilePath, "utf8");
         return JSON.parse(cartsData);
+        
     } catch (error) {
         return [];
     }
 }
 
+
 function saveCartsData(data) {
     fs.writeFileSync(cartsFilePath, JSON.stringify(data, null, 2), "utf8");
 }
 
-router.get("/:cid", (req, res) => {
+
+router.get("/:cid", async (req, res) => {
     try {
         const cartId = req.params.cid;
-        const cartsData = loadCartsData();
+        const cartsData = await loadCartsData();
 
         const cart = cartsData.find(cart => cart.id === cartId);
 
@@ -34,14 +38,14 @@ router.get("/:cid", (req, res) => {
     }
 });
 
-router.post("/", (req, res) => {
+router.post("/",  async (req, res) => {
     try {
         const newCart = {
             id: generateUniqueId(),
             products: []
         };
 
-        const cartsData = loadCartsData();
+        const cartsData = await loadCartsData();
         cartsData.push(newCart);
         saveCartsData(cartsData);
 
@@ -51,12 +55,12 @@ router.post("/", (req, res) => {
     }
 });
 
-router.post("/:cid/products/:pid", (req, res) => {
+router.post("/:cid/products/:pid", async (req, res) => {
     try {
         const cartId = req.params.cid;
         const productId = req.params.pid;
 
-        const cartsData = loadCartsData();
+        const cartsData = await loadCartsData();
         const cartIndex = cartsData.findIndex(cart => cart.id === cartId);
 
         if (cartIndex === -1) {
@@ -83,5 +87,6 @@ router.post("/:cid/products/:pid", (req, res) => {
 function generateUniqueId() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
+
 
 export default router;
